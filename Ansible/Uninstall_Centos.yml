@@ -1,0 +1,106 @@
+---
+- name: Uninstall Jenkins
+  hosts: CentOs
+  gather_facts: true
+  become: yes
+  become_method: sudo
+
+  tasks:
+          - name: Stop jenkins Server
+            service:
+              name: jenkins
+              state: stopped
+
+          - name: Ansible autoremove directory
+            yum:
+             name: jenkins
+             autoremove: yes
+
+
+          - name: Ansible autoremove directory
+            file:
+              path: /var/lib/jenkins
+              state: absent
+
+          - name: Uninstall openjdk8
+            yum:
+              name: java
+              autoremove: yes
+              state: absent
+
+          - name: update the packages
+            yum:
+              update_cache: yes
+              update_only: yes
+              state: latest
+
+
+- name: Uninstall Jenkins
+  hosts: RedHat
+  gather_facts: true
+  become: yes
+  become_method: sudo
+
+  tasks:
+          - name: Stop jenkins Server
+            service:
+              name: jenkins
+              state: stopped
+
+          - name: Ansible autoremove directory
+            yum:
+             name: jenkins
+             autoremove: yes
+
+
+          - name: Ansible autoremove directory
+            file:
+              path: /var/lib/jenkins
+              state: absent
+
+          - name: Uninstall openjdk8
+            yum:
+              name: java
+              autoremove: yes
+              state: absent
+
+          - name: update the packages
+            yum:
+              update_cache: yes
+              update_only: yes
+              state: latest
+
+- name: Uninstall Jenkins
+  hosts: CentOs
+  gather_facts: true
+  become: yes
+  become_method: sudo
+
+  tasks:
+          - name: Stop jenkins Server
+            service:
+              name: jenkins
+              state: stopped
+
+          - name: Ansible autoremove directory
+            yum:
+             name: jenkins
+             autoremove: yes
+
+
+          - name: Ansible autoremove directory
+            file:
+              path: /var/lib/jenkins
+              state: absent
+
+          - name: Uninstall openjdk8
+            yum:
+              name: java
+              autoremove: yes
+              state: absent
+
+          - name: update the packages
+            yum:
+              update_cache: yes
+              update_only: yes
+              state: latest

@@ -1,0 +1,28 @@
+---
+- hosts: win
+  tasks:
+  - name: Uninstall Java
+    win_chocolatey:
+      name: jdk8
+      state: absent
+
+  - name: Uninstall Jenkins
+    win_chocolatey:
+      name: jenkins
+      state: absent
+
+  - name: Remove directory structure
+    win_file:
+      path: C:\Program Files (x86)\Jenkins
+      state: absent
+
+
+  - name: Firewall rule to allow RDP on TCP port 8080
+    win_firewall_rule:
+      name: Remote Desktop
+      localport: 8080
+      action: allow
+      direction: in
+      protocol: tcp
+      profiles: private
+      state: absent

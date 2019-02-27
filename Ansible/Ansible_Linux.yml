@@ -1,0 +1,29 @@
+- hosts: CentOs
+  vars:
+    jenkins_hostname: localhost
+  roles:
+    - role: geerlingguy.java
+      become: yes
+    - role: geerlingguy.jenkins
+      become: yes
+
+- hosts: RedHat
+  vars:
+    jenkins_hostname: localhost
+  roles:
+    - role: geerlingguy.java
+      become: yes
+    - role: geerlingguy.jenkins
+      become: yes
+
+
+- hosts: win
+  tasks:
+  - name: Run remote PowerShell Script
+    win_command: powershell.exe -ExecutionPolicy ByPass -File C:\Users\snehalg2215\Desktop\ConfigureRemotingForAnsible.ps1
+
+  - name: Run remote PowerShell Script
+    win_command: powershell.exe -ExecutionPolicy ByPass -File C:\Users\snehalg2215\Desktop\install.ps1
+
+  - name: Run remote PowerShell Script
+    win_command: powershell.exe -ExecutionPolicy ByPass -File C:\Users\snehalg2215\Desktop\jenkins.ps1
